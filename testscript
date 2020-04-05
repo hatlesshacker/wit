@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+cd wit-client
+./configure
+make
+make dist
+cd ..
