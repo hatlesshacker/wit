@@ -1,8 +1,16 @@
-version: 2.1
+version: 2
+
 jobs:
   build:
-    docker: 
-      - image: circleci/node:4.8.2
+    docker:
+      - image: "debian:stretch"
     steps:
       - checkout
-      - run: ./testscript
+      - run:
+          command: 'apt-get update && apt-get install -y sudo
+      - run:
+          command: 'apt-get update && apt-get install -y gcc g++'
+      - run:
+          command: 'apt-get update && sudo apt-get install make'
+      - run:
+          command: './testscript'
