@@ -8,9 +8,10 @@ int main(int argc, char* argv[]) {
     std::string add(PACKAGE_VERSION);
     topline.append(add);
 
-    cout << topline << endl;
     CLI::App app{topline};
 
+    app.require_subcommand(1);
+    
     string init_loc = "."; //Default
     app.add_option("-i,--init", init_loc, "Initialize a wit repository");
 
