@@ -24,8 +24,47 @@ int main(int argc, char* argv[]) {
                 std::cout << *i << ' ';
             }
             std::cout << "..\n";
+
+
+            //STEP 1: Create the .wit/ directory and the subsequent structures
+            if (mkdir(".wit", 0777) == -1) {
+                cout << "Not able to create .wit/ . Check perms maybe?\n";
+                exit(-1);
+            }
+            if (mkdir(".wit/changes", 0777) == -1) {
+                cout << "Not able to create .wit/changes/ . Check perms maybe?\n";
+                exit(-1);
+            }
+
+            //STEP 2: Ask user for credentials to remote repo
+
+            //STEP 3: Obtain the information from remote repo and
+            //        Populate local repo
+
         } else {
             std::cout << "Initializing local wit repo..\n";
+
+            //STEP 1: Create the .wit/ directory and the subsequent structures
+            if (mkdir(".wit", 0777) == -1) {
+                cout << "Not able to create .wit/ . Check perms maybe?\n";
+                exit(-1);
+            }
+            if (mkdir(".wit/changes", 0777) == -1) {
+                cout << "Not able to create .wit/changes/ . Check perms maybe?\n";
+                exit(-1);
+            }
+
+            fstream auth_json;      auth_json.open(".wit/auth.json", ios::out); 
+            fstream versions_json;  versions_json.open(".wit/versions.json", ios::out);
+            fstream description;    description.open(".wit/description", ios::out);
+
+            cout << "Empty wit repo made in .wit/\n";
+
+
+            //STEP 2: create the initial version from the current structure
+            //        and ask the user for a commit message.
+
+            //STEP 3: Store the version info.
         }
     });
 
